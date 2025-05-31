@@ -7,7 +7,7 @@
 </body>
 </html>
 
-Header
+!header
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +29,7 @@ Header
     </nav>
     <hr>
 
-!Account
+!account
 <?php
 require 'db.php';
 checkAuth();
@@ -96,7 +96,7 @@ $orders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 <?php require './inc/footer.php'; ?>
 
-!Admin
+!admin
 <?php
 require 'db.php';
 checkAdmin();
@@ -442,10 +442,9 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     login VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
-    full_name VARCHAR(100) NOT NULL,
+    name VARCHAR(100) NOT NULL,
     phone VARCHAR(20) NOT NULL,
     email VARCHAR(100) NOT NULL,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE orders (
@@ -458,7 +457,7 @@ CREATE TABLE orders (
     from_address TEXT NOT NULL,
     to_address TEXT NOT NULL,
     status VARCHAR(20) DEFAULT 'Новая',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 ```    
